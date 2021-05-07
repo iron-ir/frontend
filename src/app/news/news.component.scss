@@ -1,0 +1,12 @@
+.list-group-item {
+
+}
+.list-group-item:hover, .list-group-item.active {
+  background-color: var(--color-primary);
+}
+.list-group-item:hover a, .list-group-item.active a {
+  color: var(--txt-o);
+}
+.list-group-item a {
+  transition: 0.2s;
+}

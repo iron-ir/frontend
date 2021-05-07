@@ -15,8 +15,8 @@
         <div class="col-md-4">
           <h2 class="txt-primary text-center fw-bolder">انتخابات ریاست جمهوری</h2>
           <hr>
-          <button class="btn btn-success w-100 mb-3">مشاهده کاندیده ها</button>
-          <button class="btn btn-danger w-100 mb-3">اخبار و اطلاعیه ها</button>
+          <a routerLink="president" class="btn btn-success w-100 mb-3">مشاهده کاندیده ها</a>
+          <a routerLink="news" class="btn btn-danger w-100 mb-3">اخبار و اطلاعیه ها</a>
         </div>
 
         <div class="col-md-8">
@@ -155,7 +155,7 @@
                     <a class="w-100 fs-075rem">مقایسه <i class="fa fa-group"></i></a>
                   </li>
                   <li>
-                    <a class="w-100 fs-075rem">مشاهده <i class="fa fa-search-plus"></i></a>
+                    <a class="w-100 fs-075rem" [routerLink]="['city-council','detail', president.id]">مشاهده <i class="fa fa-search-plus"></i></a>
                   </li>
                 </ul>
               </div>
@@ -175,7 +175,7 @@
                     <a class="w-100 fs-075rem">مقایسه <i class="fa fa-group"></i></a>
                   </li>
                   <li>
-                    <a class="w-100 fs-075rem">مشاهده <i class="fa fa-search-plus"></i></a>
+                    <a class="w-100 fs-075rem" [routerLink]="['city-council','detail', president.id]">مشاهده <i class="fa fa-search-plus"></i></a>
                   </li>
                 </ul>
               </div>
@@ -195,7 +195,7 @@
                     <a class="w-100 fs-075rem">مقایسه <i class="fa fa-group"></i></a>
                   </li>
                   <li>
-                    <a class="w-100 fs-075rem">مشاهده <i class="fa fa-search-plus"></i></a>
+                    <a class="w-100 fs-075rem" [routerLink]="['city-council','detail', president.id]">مشاهده <i class="fa fa-search-plus"></i></a>
                   </li>
                 </ul>
               </div>
