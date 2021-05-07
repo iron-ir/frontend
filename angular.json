@@ -28,9 +28,15 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/bootstrap/bootstrap.rtl.min.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/owl.carousel.css",
+              "src/assets/css/owl.theme.default.min.css",
+              "src/assets/css/templatemo-style.css",
+              "src/assets/css/font.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["src/assets/bootstrap/bootstrap.bundle.min.js"]
           },
           "configurations": {
             "production": {

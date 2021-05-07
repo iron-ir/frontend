@@ -1,0 +1,37 @@
+<div id="page-title-section">
+  <h2 class="text-light">کاندید های <small> ریاست جمهوری</small></h2>
+</div>
+<!-- Presidents -->
+<div class="bg-2" id="presidents-candidate">
+  <section>
+    <div class="container">
+      <div class="row">
+        <div *ngFor="let president of presidents" class="col-md-3 col-sm-6 mb-3">
+          <div class="president-grid-thumb">
+            <div class="president-grid-image">
+              <img alt="" class="img-responsive" src="{{president.imageUrl}}">
+            </div>
+            <div class="president-grid-info">
+              <h3>{{president.fullname}}</h3>
+              <span>{{president.slogan}}</span>
+            </div>
+            <div class="row">
+              <div class="col-auto">
+                <ul class="social-icon">
+                  <li><a attr="facebook icon" class="fa fa-facebook-square" href="#"></a></li>
+                  <li><a class="fa fa-twitter" href="#"></a></li>
+                  <li><a class="fa fa-instagram" href="#"></a></li>
+                </ul>
+              </div>
+              <div class="col-auto d-flex align-items-center">
+                <a [routerLink]="['/president', president.id]">مشاهده پروفایل</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>

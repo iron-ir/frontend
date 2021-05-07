@@ -1,0 +1,127 @@
+{
+  "newses":[
+    {
+      "id":0,
+      "date":"1400/03/10",
+      "comments":"120",
+      "category":"ریاست جمهوری",
+      "imageUrl":"assets/images/bg1.jpg",
+      "title":"عنوان خبر در مورد ریاست جمهوری",
+      "review":"خلاصه خبر درمورد ریاست جمهوری اینجا نوشته می شود و حداکثر چند کاراکتر است"
+    },
+    {
+      "id":1,
+      "date":"1400/03/18",
+      "comments":"865",
+      "category":"شورای شهر",
+      "imageUrl":"assets/images/bg2.jpeg",
+      "title":"عنوان خبر شورای شهر",
+      "review":"خلاصه خبر درمورد ریاست جمهوری اینجا نوشته می شود و حداکثر چند کاراکتر است"
+    },
+    {
+      "id":2,
+      "date":"1400/03/22",
+      "comments":"329",
+      "category":"انتخابات",
+      "imageUrl":"assets/images/raeisi.jpg",
+      "title":"عنوان خبر در مورد انتخابات",
+      "review":"خلاصه خبر درمورد ریاست جمهوری اینجا نوشته می شود و حداکثر چند کاراکتر استخلاصه خبر درمورد ریاست جمهوری اینجا نوشته می شود و حداکثر چند کاراکتر است"
+    }
+  ],
+  "presidents":[
+    {
+      "id":0,
+      "imageUrl":"assets/images/ghalibaf.jpg",
+      "fullname":"محمد باقر قالیباف",
+      "slogan":"شعار انتخاباتی قالیباف"
+    },
+    {
+      "id":1,
+      "imageUrl":"assets/images/raeisi.jpg",
+      "fullname":"محمد رئیسی",
+      "slogan":"شعار انتخاباتی رئیسی"
+    },
+    {
+      "id":2,
+      "imageUrl":"assets/images/zarif.jpg",
+      "fullname":"محمدجواد ظریف",
+      "slogan":"شعار انتخاباتی ظریف"
+    },
+    {
+      "id":3,
+      "imageUrl":"assets/images/jahangiri.jpg",
+      "fullname":"اسحاق جهانگیری",
+      "slogan":"شعار انتخاباتی جهانگیری"
+    }
+  ],
+  "states":[
+    {
+      "id":1,
+      "title":"tehran",
+      "persianTitle":"تهران",
+      "imageUrl": "assets/images/states/Tehran.png"
+    },
+    {
+      "id":2,
+      "title":"esfehan",
+      "persianTitle":"اصفهان",
+      "imageUrl": "assets/images/states/Esfehan.png"
+    },
+    {
+      "id":3,
+      "title":"fars",
+      "persianTitle":"فارس",
+      "imageUrl": "assets/images/states/Fars.png"
+    },
+    {
+      "id":4,
+      "title":"khorasan",
+      "persianTitle":"خراسان",
+      "imageUrl": "assets/images/states/Khorasan.png"
+    },
+    {
+      "id":5,
+      "title":"azarbaijan",
+      "persianTitle":"آذربایجان",
+      "imageUrl": "assets/images/states/Azarbaijan.png"
+    },
+    {
+      "id":6,
+      "title":"mazandaran",
+      "persianTitle":"مازندران",
+      "imageUrl": "assets/images/states/Mazandaran.png"
+    }
+  ],
+  "allCities":[
+    {
+      "id":1,
+      "stateId":1,
+      "title":"tehran",
+      "persianTitle":"تهران"
+    },
+    {
+      "id":2,
+      "stateId":1,
+      "title":"eslamshar",
+      "persianTitle":"اسلامشهر"
+    },
+    {
+      "id":3,
+      "stateId":1,
+      "title":"robat",
+      "persianTitle":"رباط کریم"
+    },
+    {
+      "id":4,
+      "stateId":2,
+      "title":"esfehan",
+      "persianTitle":"اصفهان"
+    },
+    {
+      "id":5,
+      "stateId":3,
+      "title":"shiraz",
+      "persianTitle":"شیراز"
+    }
+  ]
+}

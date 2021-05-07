@@ -1,0 +1,69 @@
+#overview {
+  width: 100%;
+  overflow: hidden;
+}
+#overview-detail {
+  height: 30vh;
+  background:linear-gradient(135deg, #00000055, #00000088), url('/assets/images/bg2.jpeg');
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+#overview-tabs {
+  z-index: 1;
+  position: relative;
+}
+#overview-tabs .nav {
+  box-shadow: 0 5px 5px #00000022;
+}
+#overview-tabs .nav-item {
+  border-bottom: 2px solid transparent;
+  transition: 0.5s;
+}
+#overview-tabs .nav-item:hover {
+  border-bottom: 2px solid var(--color-primary);
+}
+
+#overview-img {
+  height: 50vh;
+  width: 50vh;
+  margin-top: 5vh;
+  margin-bottom: -25vh;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0  10px #00000055;
+}
+
+#overview-tabs {
+  height: 30vh;
+}
+
+.candidate-section-title h3 {
+  font-size: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--color-primary);
+}
+.candidate-section-title {
+  display: flex;
+  align-items: start;
+}
+
+@media only screen and (max-width: 992px) {
+  #overview-detail {
+    height: unset;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  #overview-img {
+    height: 40vw;
+    width: 40vw;
+    margin: 5%;
+  }
+
+  #overview-tabs {
+    height: unset;
+  }
+}

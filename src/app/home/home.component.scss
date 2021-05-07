@@ -1,0 +1,82 @@
+#home-carousel {
+  height: 90vh;
+  width: 100vw;
+}
+#home-carousel-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 90vh;
+  width: 100vw;
+  background-color: #00000088;
+  color: var(--txt-o);
+}
+#home-slider-container {
+  position: relative;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+#home-carousel .carousel-item,#home-carousel .carousel-item>img {
+  height: 100%;
+}
+#home-carousel .carousel-inner>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.separator {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.separator-img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.separator-overlay {
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  background-color: #00000088;
+}
+.separator-title {
+  color: #fff;
+  z-index: 1;
+}
+
+.state-map-img {
+  width: 60%;
+  margin: 5%;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.state-map-img:hover {
+  width: 70%;
+  filter: sepia(1) saturate(50) hue-rotate(45deg);
+  margin: 0;
+}
+
+@media only screen and (max-width: 992px) {
+  .state-map-img {
+    width: 95%;
+    margin: 2.5%;
+  }
+
+  .state-map-img:hover {
+    width: 100%;
+    margin: 0;
+  }
+}

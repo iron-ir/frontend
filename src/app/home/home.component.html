@@ -1,0 +1,260 @@
+<div id="home-slider-container">
+  <div class="carousel slide" data-bs-ride="carousel" id="home-carousel">
+    <div class="carousel-inner h-100">
+      <div class="carousel-item active">
+        <img alt="انتخابات" class="d-block w-100" src="assets/images/bg2.jpeg">
+      </div>
+      <div class="carousel-item">
+        <img alt="انتخابات" class="d-block w-100" src="assets/images/bg1.jpg">
+      </div>
+    </div>
+  </div>
+  <div id="home-carousel-content">
+    <div class="container h-100">
+      <div class="row h-100 d-flex align-items-center">
+        <div class="col-md-4">
+          <h2 class="txt-primary text-center fw-bolder">انتخابات ریاست جمهوری</h2>
+          <hr>
+          <button class="btn btn-success w-100 mb-3">مشاهده کاندیده ها</button>
+          <button class="btn btn-danger w-100 mb-3">اخبار و اطلاعیه ها</button>
+        </div>
+
+        <div class="col-md-8">
+          <h2 class="txt-primary text-center fw-bolder">انتخابات شورای شهر</h2>
+          <hr>
+          <div class="row">
+            <div class="col-4 text-center">
+              <a routerLink="/city-council/1">
+                <img class="state-map-img" src="assets/images/states/Tehran.png" alt=""/>
+              </a>
+            </div>
+            <div class="col-4 text-center">
+              <a routerLink="/city-council/2">
+                <img class="state-map-img" src="assets/images/states/Esfehan.png" alt=""/>
+              </a>
+            </div>
+            <div class="col-4 text-center">
+              <a routerLink="/city-council/3">
+                <img class="state-map-img" src="assets/images/states/Fars.png" alt=""/>
+              </a>
+            </div>
+            <div class="col-4 text-center">
+              <a routerLink="/city-council/4">
+                <img class="state-map-img" src="assets/images/states/Khorasan.png" alt=""/>
+              </a>
+            </div>
+            <div class="col-4 text-center">
+              <a routerLink="/city-council/5">
+                <img class="state-map-img text-center" src="assets/images/states/Azarbaijan.png" alt=""/>
+              </a>
+            </div>
+            <div class="col-4 text-center">
+              <a routerLink="/city-council/6">
+                <img class="state-map-img" src="assets/images/states/Mazandaran.png" alt=""/>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Presidents -->
+<div class="bg-2" id="presidents-candidate">
+  <section>
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-12 col-sm-12">
+          <div class="section-title">
+            <h2>کاندید های <small> ریاست جمهوری</small></h2>
+          </div>
+        </div>
+
+        <div *ngFor="let president of presidents" class="col-md-3 col-sm-6 mb-3">
+          <div class="president-grid-thumb">
+            <div class="president-grid-image">
+              <img alt="" class="img-responsive" src="{{president.imageUrl}}">
+            </div>
+            <div class="president-grid-info">
+              <h3>{{president.fullname}}</h3>
+              <span>{{president.slogan}}</span>
+            </div>
+            <div class="row">
+              <div class="col-auto">
+                <ul class="social-icon">
+                  <li><a attr="facebook icon" class="fa fa-facebook-square" href="#"></a></li>
+                  <li><a class="fa fa-twitter" href="#"></a></li>
+                  <li><a class="fa fa-instagram" href="#"></a></li>
+                </ul>
+              </div>
+              <div class="col-auto d-flex align-items-center">
+                <a [routerLink]="['/president', president.id]">مشاهده پروفایل</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SEPARATOR -->
+<div class="separator">
+  <img alt="انتخابات ایران" class="separator-img" src="assets/images/bg2.jpeg">
+  <div class="separator-overlay"></div>
+  <h2 class="separator-title mb-0">"میزان رای ملت است"</h2>
+  <p class="separator-title mb-0 text-end">امام خمینی (ره)</p>
+</div>
+
+<!-- City Council -->
+<div class="bg-1" id="city-council-candidate">
+  <section>
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-12 col-sm-12">
+          <div class="section-title">
+            <h2>کاندید های <small> شورای شهر</small></h2>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-3 d-flex align-items-center justify-content-md-end mb-3">انتخاب استان</div>
+            <div class="col-md-3 mb-3">
+              <select (change)="setStateAndCities($event)" aria-label="Default select example" class="form-select">
+                <option [value]="undefined" selected>همه استان ها</option>
+                <option *ngFor="let state of states" [value]="state.id">{{state.persianTitle}}</option>
+              </select>
+            </div>
+            <div class="col-md-3 d-flex align-items-center justify-content-md-end mb-3">انتخاب شهر/شهرستان</div>
+            <div class="col-md-3 mb-3">
+              <select [disabled]="selectedState == null || cities.length == 0" aria-label="Default select example"
+                      class="form-select">
+                <option [value]="undefined" selected>همه شهر ها</option>
+                <option *ngFor="let city of cities" [value]="city.id">{{city.persianTitle}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div *ngFor="let president of presidents" class="col-lg-3 col-sm-6 px-4 pb-4">
+          <div class="row city-council-grid-thumb bg-2">
+            <div class="col-4 ps-0"><img alt="" class="city-council-grid-image" src="{{president.imageUrl}}"></div>
+            <div class="col-8 p-2 pb-4 position-relative">
+              <h5>{{president.fullname}}</h5>
+              <hr>
+              <p>{{president.slogan}}</p>
+              <div class="city-council-action-icon">
+                <ul>
+                  <li>
+                    <a class="w-100 fs-075rem">مقایسه <i class="fa fa-group"></i></a>
+                  </li>
+                  <li>
+                    <a class="w-100 fs-075rem">مشاهده <i class="fa fa-search-plus"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let president of presidents" class="col-lg-3 col-sm-6 px-4 pb-4">
+          <div class="row city-council-grid-thumb bg-2">
+            <div class="col-4 ps-0"><img alt="" class="city-council-grid-image" src="{{president.imageUrl}}"></div>
+            <div class="col-8 p-2 pb-4 position-relative">
+              <h5>{{president.fullname}}</h5>
+              <hr>
+              <p>{{president.slogan}}</p>
+              <div class="city-council-action-icon">
+                <ul>
+                  <li>
+                    <a class="w-100 fs-075rem">مقایسه <i class="fa fa-group"></i></a>
+                  </li>
+                  <li>
+                    <a class="w-100 fs-075rem">مشاهده <i class="fa fa-search-plus"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let president of presidents" class="col-lg-3 col-sm-6 px-4 pb-4">
+          <div class="row city-council-grid-thumb bg-2">
+            <div class="col-4 ps-0"><img alt="" class="city-council-grid-image" src="{{president.imageUrl}}"></div>
+            <div class="col-8 p-2 pb-4 position-relative">
+              <h5>{{president.fullname}}</h5>
+              <hr>
+              <p>{{president.slogan}}</p>
+              <div class="city-council-action-icon">
+                <ul>
+                  <li>
+                    <a class="w-100 fs-075rem">مقایسه <i class="fa fa-group"></i></a>
+                  </li>
+                  <li>
+                    <a class="w-100 fs-075rem">مشاهده <i class="fa fa-search-plus"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- NEWS -->
+<div class="bg-2" id="news-section">
+  <section id="news">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-12 col-sm-12">
+          <div class="section-title">
+            <h2>جدیدترین اخبار <small>پیرامون انتخابات</small></h2>
+          </div>
+
+          <div class="row">
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-3" *ngFor="let news of newses">
+              <div>
+                <div class="news-thumb">
+                  <div class="news-top">
+                    <div class="news-image">
+                      <img alt="" class="img-responsive" [src]="news.imageUrl">
+                    </div>
+                    <div class="news-date">
+                      <span><i class="fa fa-calendar"></i> {{news.date}}</span>
+                      <span><i class="fa fa-comments"></i> {{news.comments}}</span>
+                    </div>
+                  </div>
+
+                  <div class="news-detail">
+                    <h5><a href="#">{{news.title}}</a></h5>
+                    <p>{{news.review}}</p>
+                  </div>
+
+                  <div class="news-info">
+                    <div class="news-item-category fs-075rem">
+                      <i class="fa fa-list-ul me-2"></i>
+<!--                      <b>دسته بندی: </b>-->
+                      <a href="#">{{news.category}}</a>
+                    </div>
+                    <div class="news-more-link">
+                      <a class="btn btn-primary" href="#">بیشتر <i class="fa fa-arrow-left"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

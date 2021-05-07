@@ -1,0 +1,51 @@
+.nav-item:hover > a {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+form input.form-control {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--border-1);
+  border-radius: 0;
+  padding: 0.1rem 0.25rem 0.1rem 2.5rem;
+  height: fit-content;
+}
+form input.form-control:focus {
+  border-bottom: 2px solid var(--color-primary);
+  box-shadow: none;
+}
+
+form button.btn {
+  color: var(--border-1);
+  margin-right: -2.5rem;
+  z-index: 1;
+}
+form button.btn:hover, form button.btn:focus, .navbar-toggler:hover, .navbar-toggler:focus{
+  box-shadow: none;
+  color: var(--color-primary);
+
+}
+#header-special-link{
+  padding-left: 1rem ;
+  padding-right: 1rem ;
+  display: flex;
+  align-items: center;
+}
+#header-special-link>a {
+  font-size: 0.75rem;
+  border-radius: 2rem;
+  padding: 0.25rem 0.75rem;
+  border: none;
+}
+
+.nav-link {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.navbar {
+  border-top: 5px solid #29ca8e;
+  border-bottom: 5px solid red;
+  padding: 0;
+}

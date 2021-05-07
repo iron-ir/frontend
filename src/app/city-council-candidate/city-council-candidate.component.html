@@ -1,0 +1,100 @@
+<div id="page-title-section">
+  <img [src]="state.imageUrl" alt="">
+  <h2 class="text-light">کاندید های شورای شهر استان {{state.persianTitle}}</h2>
+</div>
+<!-- City Council -->
+<div class="bg-1" id="city-council-candidate">
+  <section>
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-12 col-sm-12">
+          <div class="section-title">
+            <h2>کاندید های <small> شورای شهر</small></h2>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-3 d-flex align-items-center justify-content-md-end mb-3">انتخاب استان</div>
+            <div class="col-md-3 mb-3">
+              <select (change)="setStateAndCities($event)" [(ngModel)]="stateId" class="form-select">
+                <option [value]="undefined">همه استان ها</option>
+                <option *ngFor="let state of allStates" [value]="state.id">{{state.persianTitle}}</option>
+              </select>
+            </div>
+            <div class="col-md-3 d-flex align-items-center justify-content-md-end mb-3">انتخاب شهر/شهرستان</div>
+            <div class="col-md-3 mb-3">
+              <select [disabled]="state == null || stateCities.length == 0"
+                      class="form-select">
+                <option [value]="undefined" selected>همه شهر ها</option>
+                <option *ngFor="let city of stateCities" [value]="city.id">{{city.persianTitle}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div *ngFor="let president of cityCouncil" class="col-lg-3 col-sm-6 px-4 pb-4">
+          <div class="row city-council-grid-thumb bg-2">
+            <div class="col-4 ps-0"><img alt="" class="city-council-grid-image" src="{{president.imageUrl}}"></div>
+            <div class="col-8 p-2 pb-4 position-relative">
+              <h5>{{president.fullname}}</h5>
+              <hr>
+              <p>{{president.slogan}}</p>
+              <div class="city-council-action-icon">
+                <ul>
+                  <li>
+                    <a class="w-100 fs-075rem">مقایسه <i class="fa fa-group"></i></a>
+                  </li>
+                  <li>
+                    <a class="w-100 fs-075rem">مشاهده <i class="fa fa-search-plus"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let president of cityCouncil" class="col-lg-3 col-sm-6 px-4 pb-4">
+          <div class="row city-council-grid-thumb bg-2">
+            <div class="col-4 ps-0"><img alt="" class="city-council-grid-image" src="{{president.imageUrl}}"></div>
+            <div class="col-8 p-2 pb-4 position-relative">
+              <h5>{{president.fullname}}</h5>
+              <hr>
+              <p>{{president.slogan}}</p>
+              <div class="city-council-action-icon">
+                <ul>
+                  <li>
+                    <a class="w-100 fs-075rem">مقایسه <i class="fa fa-group"></i></a>
+                  </li>
+                  <li>
+                    <a class="w-100 fs-075rem">مشاهده <i class="fa fa-search-plus"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let president of cityCouncil" class="col-lg-3 col-sm-6 px-4 pb-4">
+          <div class="row city-council-grid-thumb bg-2">
+            <div class="col-4 ps-0"><img alt="" class="city-council-grid-image" src="{{president.imageUrl}}"></div>
+            <div class="col-8 p-2 pb-4 position-relative">
+              <h5>{{president.fullname}}</h5>
+              <hr>
+              <p>{{president.slogan}}</p>
+              <div class="city-council-action-icon">
+                <ul>
+                  <li>
+                    <a class="w-100 fs-075rem">مقایسه <i class="fa fa-group"></i></a>
+                  </li>
+                  <li>
+                    <a class="w-100 fs-075rem">مشاهده <i class="fa fa-search-plus"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
