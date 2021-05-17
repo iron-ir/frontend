@@ -1,3 +1,13 @@
+# frontend
+
+## how to run project:
+* make sure that you already installed nodeJS
+* install angular cli by: npm i -g @angular/cli
+* install dependancies: npm i
+* go to project directory and put cammand in terminal: ng serve
+
+
+
 # Vote
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
