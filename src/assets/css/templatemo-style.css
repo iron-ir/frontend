@@ -17,6 +17,11 @@
   --txt-3: #454545;
   --txt-p: #757575;
   --txt-o: #ffffff;
+
+  --color-red: #F24A90;
+  --color-red-d: #dc206f;
+  --color-green: #1abc9c;
+  --color-green-d: #18aa8d;
 }
 
   /*---------------------------------------
@@ -72,12 +77,27 @@
 .txt-3{ color: var(--txt-3)!important;}
 .txt-p{ color: var(--txt-p)!important;}
 .txt-o{ color: var(--txt-o)!important;}
+.txt-red { color: var(--color-red);}
+.txt-green { color: var(--color-green);}
+/*[class*=sra-hover-text] { transition: .2s;}*/
+.txt-1-h:hover       { color: var(--txt-1);}
+.txt-2-h:hover       { color: var(--txt-2);}
+.txt-3-h:hover       { color: var(--txt-3);}
+.txt-p-h:hover       { color: var(--color-primary);}
+.txt-red-h:hover     { color: var(--color-red);}
+.txt-green-h:hover   { color: var(--color-green);}
 
 .bg-primary { background-color: var(--color-primary)!important}
 .bg-secondary { background-color: var(--color-secondary)!important}
 .bg-1 { background-color: var(--bg-1)!important}
 .bg-2 { background-color: var(--bg-2)!important}
 .bg-3 { background-color: var(--bg-3)!important}
+
+/*[class*=sra-hover-bg] { transition: .5s;}*/
+.bg-1-h:hover       { background-color: var(--bg-1);}
+.bg-2-h:hover       { background-color: var(--bg-2);}
+.bg-3-h:hover       { background-color: var(--bg-3);}
+.bg-primary-h:hover { background-color: var(--color-primary);}
 
 .border-primary { border-color: var(--color-primary)!important}
 .border-secondary { border-color: var(--color-secondary)!important}
@@ -101,6 +121,28 @@
     border-color: var(--color-primary-d);
     box-shadow: 0 0 0 0.25rem rgba(var(--color-primary-d-rgb), 0.3);
   }
+
+
+  /********************* color classes ************************/
+
+  .sra-border-l { border-left: 2px solid var(--color-primary); }
+  .sra-border-r { border-right: 2px solid var(--color-primary); }
+  .sra-hover-border-l { border-left: 2px solid transparent;  transition: .5s; }
+  .sra-hover-border-r { border-right: 2px solid transparent; transition: .5s; }
+  .sra-hover-border-l:hover { border-left: 2px solid var(--color-primary); }
+  .sra-hover-border-r:hover { border-right: 2px solid var(--color-primary); }
+
+  [class*=sra-btn], [class*=sra-btn]:hover { color: #fff; transition: .2s; cursor: pointer; }
+  .sra-btn                {background-color: var(--bg-2);box-shadow: 0 0 2px #0004;}
+  .sra-btn-primary        {background-color: var(--color-primary);}
+  .sra-btn-success        {background-color: var(--color-green);}
+  .sra-btn-danger         {background-color: var(--color-red);}
+  .sra-btn:hover          {background-color: var(--bg-1); box-shadow: 0 0 5px #0005;}
+  .sra-btn-primary:hover  {background-color: var(--color-primary-d);}
+  .sra-btn-success:hover  {background-color: var(--color-green-d);}
+  .sra-btn-danger:hover   {background-color: var(--color-red-d);}
+
+
 
   /*---------------------------------------
      GENERAL

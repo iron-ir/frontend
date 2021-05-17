@@ -1,0 +1,6 @@
+{
+  "users": [
+    {"id": 1, "name": "رضا", "lastName": "اسدی", "email": "reza@mail.com", "password": "1234", "gender": "male", "age": 23},
+    {"id": 2, "name": "کاربر", "lastName": "تست", "email": "test@mail.com", "password": "1234", "gender": "female", "age": 30}
+  ]
+}

@@ -1,0 +1,72 @@
+a.active {
+  font-weight: bold;
+}
+
+.app-sidebar {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-2);
+  box-shadow: 0 0 5px #00000055;
+}
+
+.profile-sec {
+  background: linear-gradient(0deg, #00000088, #00000088),
+    url(src/assets/images/bg2.jpeg);
+  /* background-image: url(src/assets/gym-600.jpg); */
+  background-size: cover;
+}
+
+.profile-img {
+  transition: 0.5s;
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.app-sidebar.sidebar-closed .profile-img {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+ul.main-menu > li > a {
+  position: relative;
+  transition: 0.5s;
+  border-right: 3px solid transparent;
+}
+
+ul > li.active > a {
+  border-right: 3px solid var(--color-primary);
+  background-color: #fff;
+}
+ul.main-menu > li > a {
+  padding: 0.75em;
+}
+
+ul.main-menu > li .collapsed {
+  display: none;
+  position: absolute;
+  left: 1em;
+}
+ul > li.active > a > span.collapsed {
+  display: inline-block;
+}
+ul.main-menu > li.active ul.submenu {
+  display: block;
+}
+.app-sidebar.sidebar-closed ul.main-menu > li ul.submenu {
+  display: none;
+}
+ul.main-menu > li > ul.submenu a {
+  padding-right: 2.5rem;
+}
+ul > li > a:hover {
+  border-right: 3px solid var(--color-primary);
+  background-color: var(--bg-1);
+}
+
+@media only screen and (max-width: 768px) {
+  .profile-img {
+    width: 50px;
+    height: 50px;
+  }
+}

@@ -1,0 +1,30 @@
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(0deg, #000000bb, #00000099), url(/assets/images/bg2.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sra-section {
+  transition: .5s;
+}
+
+
+.login-container > .sra-section{
+  width: 90vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .login-container > .sra-section{
+    width: 50vw;
+  }
+}
+@media only screen and (min-width: 1248px) {
+  .login-container > .sra-section{
+    width: 30vw;
+  }
+}

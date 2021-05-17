@@ -7,9 +7,13 @@ import {PresidentCandidatesComponent} from './president-candidates/president-can
 import {NewsComponent} from './news/news.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
+import {LoginSignupComponent} from './login-signup/login-signup.component';
+import {AuthGuard} from './auth-guard.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'auth', component: LoginSignupComponent},
+  {path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard], canActivateChild: [AuthGuard]},
   {path: 'news', component: NewsComponent},
   {path: 'about-us', component: AboutUsComponent},
   {path: 'contact-us', component: ContactUsComponent},

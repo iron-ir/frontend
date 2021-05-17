@@ -2,8 +2,21 @@
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 text-start mb-lg-0 p-0 px-lg-3">
+        <li class="nav-item dropdown" *ngIf="isLogin">
+          <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" id="navbarDropdownProfile"
+             role="button">
+            <img src="assets/images/profile.jpg" style="border-radius: 50%; width: 22px; height: 22px" alt="">
+
+            {{userData.father_name ? userData.father_name : userData.username}}
+          </a>
+          <ul aria-labelledby="navbarDropdownProfile" class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/dashboard">داشبورد</a></li>
+            <li><a class="dropdown-item" (click)="userService.logout()">خروج</a></li>
+            <!--            <li><hr class="dropdown-divider"></li>-->
+          </ul>
+        </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/">خانه</a>
+          <a aria-current="page" class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">خانه</a>
         </li>
         <li class="nav-item dropdown">
           <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" id="navbarDropdown"
@@ -11,8 +24,8 @@
             ریاست جمهوری
           </a>
           <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/president">کاندید ها</a></li>
-            <li><a class="dropdown-item" routerLink="/news">اخبار</a></li>
+            <li><a class="dropdown-item" routerLink="/president" routerLinkActive="active">کاندید ها</a></li>
+            <li><a class="dropdown-item" routerLink="/news" routerLinkActive="active">اخبار</a></li>
             <!--            <li><hr class="dropdown-divider"></li>-->
           </ul>
         </li>
@@ -22,29 +35,39 @@
             شورای شهر
           </a>
           <ul aria-labelledby="navbarDropdown2" class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/city-council">استان ها</a></li>
-            <li><a class="dropdown-item" routerLink="/news">اخبار</a></li>
+            <li><a class="dropdown-item" routerLink="/city-council" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">استان ها</a></li>
+            <li><a class="dropdown-item" routerLink="/news" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">اخبار</a></li>
             <!--            <li><hr class="dropdown-divider"></li>-->
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/about-us">درباره ما</a>
+          <a class="nav-link" routerLink="/about-us" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">درباره ما</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contact-us">تماس باما</a>
+          <a class="nav-link" routerLink="/contact-us" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">تماس باما</a>
         </li>
+        <ng-container *ngIf="!isLogin">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/auth" fragment="login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">ورود</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/auth" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">ثبت نام</a>
+          </li>
+        </ng-container>
         <li class="nav-item" id="header-special-link">
           <a class="btn btn-danger" disabled="true">نظرسنجی</a>
         </li>
       </ul>
       <form class="d-flex align-items-center me-auto">
-        <input class="form-control text-start me-2" type="search" placeholder="جستجو" aria-label="Search">
+        <input aria-label="Search" class="form-control text-start me-2" placeholder="جستجو" type="search">
         <button class="btn" type="submit"><i class="fa fa-search"></i></button>
       </form>
     </div>
     <a class="navbar-brand txt-primary fw-bolder" routerLink="/">
-      <img style="height: 28px" alt="iran-election" src="assets/images/allah.png"/></a>
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <img alt="iran-election" src="assets/images/allah.png" style="height: 28px"/></a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler border-0" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
+            type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
   </div>

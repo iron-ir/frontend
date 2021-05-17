@@ -1,3 +1,21 @@
-<app-header></app-header>
-<ng-content></ng-content>
-<app-footer></app-footer>
+<ng-container *ngIf="!dashboard">
+  <app-header></app-header>
+  <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  <app-footer></app-footer>
+</ng-container>
+<div *ngIf="dashboard" class="container-fluid bg-1">
+  <div id="mobile-hover" *ngIf="!sidebarClosed" (click)="onToggle()"></div>
+  <div class="row">
+    <div class="p-0" id="sidebar-container" [ngClass]="{'sidebar-closed': sidebarClosed}">
+      <span class="sidebar-toggle p-0 sra-btn sra-round-l" (click)="onToggle()">
+        <i class="fa fa-angle-left txt-primary txt-secondary-h" [class.fa-rotate-180]="!sidebarClosed" style="transition: 0.2s"></i>
+      </span>
+      <app-sidebar [sidebarClosed]="sidebarClosed"></app-sidebar>
+    </div>
+    <div id="main-container" class="p-3 overflow-y-scroll"  [ngClass]="{'sidebar-closed': sidebarClosed}">
+      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #contentTemplate><ng-content></ng-content></ng-template>

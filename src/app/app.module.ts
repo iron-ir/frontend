@@ -9,11 +9,14 @@ import {LayoutComponent} from './layout/layout.component';
 import {HomeComponent} from './home/home.component';
 import {CityCouncilCandidateComponent} from './city-council-candidate/city-council-candidate.component';
 import {PresidentCandidatesComponent} from './president-candidates/president-candidates.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CandidateProfileComponent} from './candidate-profile/candidate-profile.component';
 import {NewsComponent} from './news/news.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
+import {LoginSignupComponent} from './login-signup/login-signup.component';
+import {SidebarComponent} from './layout/sidebar/sidebar.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -22,6 +25,8 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
+    SidebarComponent,
+    LoginSignupComponent,
     HomeComponent,
     NewsComponent,
     ContactUsComponent,
@@ -33,7 +38,9 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

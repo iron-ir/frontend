@@ -9,6 +9,8 @@
     "no-string-literal": false,
     "prefer-const": false,
     "object-literal-shorthand": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "align": {
       "options": [
         "parameters",
@@ -113,7 +115,8 @@
       "options": [
         "ban-keywords",
         "check-format",
-        "allow-pascal-case"
+        "allow-pascal-case",
+        "allow-snake-case"
       ]
     },
 //    "whitespace": {

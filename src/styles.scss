@@ -1,1 +1,93 @@
 /* You can add global styles to this file, and also import other style files */
+
+/********************* tag customizing ************************/
+//a, a:not([href]):not([class]) {
+//  color: var(--color-primary);
+//  transition: .5s;
+//  cursor: pointer;
+//  text-decoration: none;
+//}
+//a:hover,  a:hover:not([href]):not([class]) {color: var(--color-primary-d); text-decoration: none;}
+//a.sra-link-red { color: var(--color-red); }
+//a.sra-link-red:hover { color: var(--color-red-d); }
+
+hr {
+  border-color: var(--color-primary)!important;
+}
+
+form {
+  text-align: right;
+}
+input, input.form-control,
+select, select.form-control,
+textarea, textarea.form-control {
+  background-color: var(--bg-2);
+  border-color: var(--border-1);
+  color: var(--txt-2);
+}
+
+input:focus, input.form-control:focus,
+select:focus,select.form-control:focus,
+textarea:focus, textarea.form-control:focus {
+  background-color: var(--bg-1);
+  border-color: var(--color-primary);
+  color: var(--txt-1);
+}
+
+input.ng-invalid.ng-touched, input.form-control.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched, select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched, textarea.form-control.ng-invalid.ng-touched {
+  border-color: var(--color-red-d);
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/********************* custom classes ************************/
+.sra-section {
+  border-radius: 10px;
+  box-shadow: 0 0 5px #00000055;
+  background-color: var(--bg-2);
+}
+.sra-section-primary {
+  border-radius: 10px;
+  background-color: var(--color-primary);
+}
+.sra-section-dark {
+  border-radius: 10px;
+  background-color: var(--bg-3);
+}
+table.sra-table {
+  border-collapse: collapse!important;
+  border-radius: 10px!important;
+  color: #fff;
+  background-color: var(--bg-2);
+}
+table.sra-table td, table.sra-table th {
+  border-top: none;
+}
+
+.sra-round { border-radius: 10px; }
+.sra-round-l {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.sra-round-r {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.sra-round-t {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.sra-round-b {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

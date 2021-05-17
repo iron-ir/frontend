@@ -1,0 +1,60 @@
+<div class="login-container bg-1">
+      <div class="sra-section p-4">
+        <form *ngIf="login" (ngSubmit)="submitLogin()" #fl="ngForm">
+          <h2 class="text-center">ورود</h2>
+          <hr>
+          <div class="mb-3">
+            <label>نام کاربری</label>
+            <input type="text" class="form-control" ngModel name="username" required >
+          </div>
+          <div class="mb-3">
+            <label>پسورد</label>
+            <input type="password" class="form-control" ngModel name="password" required>
+          </div>
+          <div class="text-center mb-3">
+            <button class="btn sra-btn-success ml-2" type="submit" [disabled]="fl.invalid">ورود</button>
+          </div>
+          <div class="text-center">
+            <p [ngClass]="{'txt-red': !success, 'txt-green': success}">{{ message }}</p>
+          </div>
+          <div class="text-center">
+          اگر اکانت ندارید <a routerLink="./" fragment="signup">ثبت نام</a> کنید
+          </div>
+        </form>
+        <form *ngIf="!login" (ngSubmit)="submitSignup()" [formGroup]="signupForm">
+          <h2 class="text-center">ثبت نام</h2>
+          <hr>
+          <div class="mb-3">
+            <label>نام کابری</label>
+            <input type="text"  class="form-control" formControlName="username">
+          </div>
+          <div class="mb-3">
+            <label>ایمیل</label>
+            <input type="email"  class="form-control" formControlName="email">
+          </div>
+          <div class="mb-3">
+            <label>شماره تلفن</label>
+            <input type="number"  class="form-control" formControlName="phone">
+          </div>
+          <ng-container formGroupName="passGroup">
+            <div class="mb-3">
+              <label>پسورد</label>
+              <input type="password"  class="form-control" formControlName="password">
+            </div>
+            <div class="mb-3">
+              <label>تکرار پسورد</label>
+              <input type="password"  class="form-control" formControlName="passwordRepeat">
+            </div>
+          </ng-container>
+          <div class="text-center mb-3">
+            <button class="btn sra-btn-success ml-2" type="submit" [disabled]="signupForm.invalid">ثبت نام</button>
+          </div>
+          <div class="text-center">
+            <p [ngClass]="{'txt-red': !success, 'txt-green': success}">{{ message }}</p>
+          </div>
+          <div class="text-center">
+            اگر قبلا ثبت نام کرده اید <a routerLink="./" fragment="login">وارد</a> شوید
+          </div>
+        </form>
+      </div>
+</div>
