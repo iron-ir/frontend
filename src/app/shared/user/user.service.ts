@@ -1,8 +1,8 @@
 import {User} from './user.model';
 import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {ResponseModel} from './response.model';
+import {Observable, of} from 'rxjs';
+import {ResponseModel} from '../response.model';
 import {CookieService} from 'ngx-cookie-service';
 
 @Injectable({providedIn: 'root'})
@@ -10,14 +10,14 @@ export class UserService {
   userData: User = new User();
   userDataObservable: EventEmitter<User> = new EventEmitter<User>();
   isLogin: EventEmitter<boolean> = new EventEmitter<boolean>();
-  session: string;
+  isGetingUserData: boolean = false;
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
 
   checkLogin() {
-    this.session = this.cookieService.get('sessionid');
-    if(this.session && this.session.trim() != ''){
+    let session = this.cookieService.get('sessionid');
+    if(session && session.trim() != ''){
         if(this.userData.id == undefined){
           this.getUserData().subscribe(res => {
             if (!res.success) {
@@ -69,13 +69,27 @@ export class UserService {
   }
 
   getUserData(): Observable<ResponseModel> {
-    console.log('checking login');
-    let headers = new HttpHeaders();
-    headers.append('contentType', 'application/json');
-    return this.http.get('/user/api/get/all/user/information', {
-      headers,
-      withCredentials: true
-    });
+    if(this.userData.username == undefined){
+      if(!this.isGetingUserData){
+        this.isGetingUserData = true;
+        let headers = new HttpHeaders();
+        headers.append('contentType', 'application/json');
+        return this.http.get('/user/api/get/all/user/information', {
+          headers,
+          withCredentials: true
+        });
+      } else {
+        let fakeRes = new ResponseModel();
+        fakeRes.data = {user: this.userData}
+        fakeRes.success = true;
+        return of(fakeRes)
+      }
+    } else {
+      let fakeRes = new ResponseModel();
+      fakeRes.data = {user: this.userData}
+      fakeRes.success = true;
+      return of(fakeRes)
+    }
   }
 
   logout() {
@@ -85,16 +99,20 @@ export class UserService {
     });
   }
 
+  updateUserProfile(): Observable<ResponseModel> {
+    console.log('updateUserProfile');
+    let headers = new HttpHeaders();
+    headers.append('contentType', 'application/json');
+    let body = new FormData();
+    for(let prop in this.userData){
+      console.log(prop, this.userData[prop]);
+      if (this.userData[prop])
+        body.append(prop, this.userData[prop]);
+    }
+    return this.http.post<ResponseModel>('/user/api/update', body, {headers});
+  }
+
   checkPassword(userId: number, password: string) {
-    // for (let i = 0; i < data.users.length; i++) {
-    //   if (data.users[i].id === userId) {
-    //     if (data.users[i].password === password) {
-    //       return {status: 200, message: 'success'};
-    //     }
-    //     return {status: 400, message: 'پسورد اشتباه است'};
-    //   }
-    // }
-    // return {status: 400, message: 'کاربر یافت نشد است'};
   }
 
 }

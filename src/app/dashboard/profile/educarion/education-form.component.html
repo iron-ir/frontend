@@ -1,0 +1,64 @@
+<router-outlet></router-outlet>
+<div class="row py-3">
+
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <div class="sra-section p-3">
+      <h3 class="text-center">سوابق تحصیلی</h3>
+      <hr>
+      <form class="text-right pt-3" #sf="ngForm" (ngSubmit)="submitForm(sf)">
+        <div class="row">
+          <div class="col-sm">
+            <div class="mb-3">
+              <label>مدرک/مقطع</label>
+              <input type="email" class="form-control" >
+<!--              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="userData.email" placeholder="name@gmail.com">-->
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="mb-3">
+              <label>رشته</label>
+              <input type="email" class="form-control" >
+              <!--              <input type="number" id="phone" name="phone" class="form-control" [(ngModel)]="userData.phone_number" placeholder="09123456789">-->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div class="mb-3">
+              <label>مکان</label>
+              <input type="email" class="form-control" >
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="mb-3">
+              <label>نام موسسه</label>
+              <input type="email" class="form-control" >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div class="mb-3">
+              <label>تاریخ فارغ التحصیلی</label>
+              <input type="email" class="form-control" >
+            </div>
+          </div>
+          <div class="col-sm d-flex align-items-center">
+            <div class="mb-3">
+              <input type="checkbox" class="form-check-input" id="isStudy">
+              <label class="ms-3 form-check-label" for="isStudy">درحال ادامه تحصیل</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3 text-center">
+          <div class="col">
+            <button class="btn sra-btn-success" type="submit" [disabled]="sf.invalid">ذخیره</button>
+          </div>
+        </div>
+      </form>
+      <div class="row" *ngIf="message"><div class="col rounded bg-success p-3 text-white" [ngClass]="{'bg-success': success, 'bg-danger': !success}">{{message}}</div></div>
+    </div>
+  </div>
+  <div class="col-lg-2"></div>
+</div>

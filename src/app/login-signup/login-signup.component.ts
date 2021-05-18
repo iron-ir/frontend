@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 
-import {UserService} from '../shared/user.service';
+import {UserService} from '../shared/user/user.service';
 import {filter} from 'rxjs/operators';
 
 @Component({

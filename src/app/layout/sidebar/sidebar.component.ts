@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserService } from 'src/app/shared/user.service';
+import { UserService } from 'src/app/shared/user/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,26 +14,19 @@ export class SidebarComponent implements OnInit {
       icon: 'fa-list',
       link: '/dashboard'
     },
-    // {
-    //   title: 'کاربران',
-    //   icon: 'fa-users',
-    //   link: '/dashboard/users',
-    //   submenu: [
-    //     {
-    //       title: 'افزودن کاربر',
-    //       link: '/dashboard/users/add-user'
-    //     },
-    //     {
-    //       title: 'لیست کاربران',
-    //       link: '/dashboard/users/user-list'
-    //     }
-    //   ]
-    // },
     {
       title: 'پروفایل',
       icon: 'fa-user',
       link: '/dashboard/profile',
       submenu: [
+        {
+          title: 'سوابق کاری',
+          link: '/dashboard/profile/education'
+        },
+        {
+          title: 'سوابق تحصیلی',
+          link: '/dashboard/profile/education'
+        },
         {
           title: 'تغییر پسورد',
           link: '/dashboard/profile/change-pass'

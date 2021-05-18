@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/shared/user.service';
+import { UserService } from 'src/app/shared/user/user.service';
 
 @Component({
   selector: 'app-password-form',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/shared/user.service';
+import { UserService } from 'src/app/shared/user/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit {
     //   'password': new FormControl(null, Validators.required),
     //   'repeatPassword': new FormControl(null, [Validators.required, this.passValidator.bind(this)]),
     // })
-    
+
     // console.log(this.userService.userData);
   }
 
@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
   //   this.userService.userData.gender = this.profileForm.value.gender;
   //   this.userService.userData.age = this.profileForm.value.age;
   //   console.log(this.userService.userData);
-    
+
   // }
 
   // onSubmitBodyForm() {
@@ -65,7 +65,7 @@ export class ProfileComponent implements OnInit {
   // }
 
   // onSubmitPasswordForm() {
-  //   let res = this.userService.checkPassword(this.userService.userData.id, this.passwordForm.value.oldPassword); 
+  //   let res = this.userService.checkPassword(this.userService.userData.id, this.passwordForm.value.oldPassword);
   //   if( res.status === 200 ){
   //     this.message = res.message;
   //   } else {

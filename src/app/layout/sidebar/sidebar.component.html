@@ -1,7 +1,8 @@
 <div class="bg-2  txt-2 app-sidebar" [ngClass]='{"sidebar-closed": sidebarClosed}'>
   <div class="profile-sec text-center py-3">
     <img src="/assets/images/profile.jpg" class="mx-auto d-block profile-img" >
-    <h5 class="mt-3 font-weight-bold txt-o"  *ngIf="!sidebarClosed">{{ userService.userData.first_name ? userService.userData.first_name : userService.userData.username }}</h5>
+    <h5 class="mt-3 font-weight-bold txt-o"  *ngIf="!sidebarClosed">
+      {{ userService.userData.first_name ? userService.userData.first_name+' '+userService.userData.last_name  : userService.userData.username }}</h5>
     <a routerLink="/" class="txt-red text-small" (click)="userService.logout()"><small>خروج</small></a>
   </div>
   <ul class="nav flex-column text-right py-2 px-0 main-menu">
