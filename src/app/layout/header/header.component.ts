@@ -14,13 +14,14 @@ export class HeaderComponent implements OnInit {
   constructor(private userService : UserService) { }
 
   ngOnInit(): void {
-    if(this.userService.checkLogin()){
-      this.userService.userDataObservable.subscribe(user => {
-        console.log(user);
-        this.userData = user;
-        this.isLogin = true;
-      })
-    }
+    this.userService.checkLogin();
+    this.userService.isLogin.subscribe(islogin => {
+      if(islogin){
+          this.userData = this.userService.userData;
+          this.isLogin = true;
+      }
+    })
+
   }
 
 }

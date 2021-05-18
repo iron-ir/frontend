@@ -23,18 +23,18 @@ export class PasswordComponent implements OnInit {
       'password': new FormControl(null, Validators.required),
       'repeatPassword': new FormControl(null, [Validators.required, this.passValidator.bind(this)]),
     })
-    
+
     console.log(this.userService.userData);
   }
 
   onSubmitPasswordForm() {
-    let res = this.userService.checkPassword(this.userService.userData.id, this.passwordForm.value.oldPassword); 
-    if( res.status === 200 ){
-      this.message = res.message;
-    } else {
-      this.message = null;
-      this.passwordErr = res.message;
-    }
+    let res = this.userService.checkPassword(this.userService.userData.id, this.passwordForm.value.oldPassword);
+    // if( res.status === 200 ){
+    //   this.message = res.message;
+    // } else {
+    //   this.message = null;
+    //   this.passwordErr = res.message;
+    // }
   }
 
   passValidator(control: FormControl) : {[s: string]: boolean} {

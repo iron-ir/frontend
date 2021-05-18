@@ -38,9 +38,13 @@ export class LoginSignupComponent implements OnInit {
         passwordRepeat: new FormControl(null, Validators.required),
       }, this.passValidator)
     });
-    if(this.userService.checkLogin()){
+    // if(this.userService.checkLogin()){
+    //   this.router.navigate(['/dashboard'])
+    // }
+    this.userService.checkLogin();
+    this.userService.isLogin.subscribe( isLogin => {
       this.router.navigate(['/dashboard'])
-    }
+    });
   }
 
   passValidator = (group: FormGroup): { [s: string]: string } | null => {
@@ -53,9 +57,9 @@ export class LoginSignupComponent implements OnInit {
 
   submitLogin() {
     this.userService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe((res) => {
-      this.message = res.body.message;
-      this.success = res.body.success;
-      console.log(res.body.success);
+      this.message = res.message;
+      this.success = res.success;
+      console.log(res.success);
       this.userService.checkLogin()
     }, error => {
       this.message = error.message;

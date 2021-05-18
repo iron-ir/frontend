@@ -6,7 +6,7 @@ import { UserService } from './shared/user.service';
 
 @Injectable({providedIn: "root"})
 export class AuthGuard implements CanActivate, CanActivateChild {
-  
+
   constructor(private userService: UserService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, routerState: RouterStateSnapshot ) : Observable<boolean> | Promise<boolean> | boolean {
@@ -14,6 +14,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     if(isLogin) {
       return true;
     } else {
+      console.log('navigator');
       this.router.navigate(['/auth'], {fragment: 'login'});
     }
   }
@@ -23,7 +24,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     if(isLogin) {
       return true;
     } else {
+      console.log('navigator');
+
       this.router.navigate(['/auth'], {fragment: 'login'});
     }
+    // this.userService.checkLogin();
+    // return this.userService.isLogin;
   }
 }

@@ -1,53 +1,45 @@
 import {User} from './user.model';
 import {EventEmitter, Injectable} from '@angular/core';
-// import * as data from './mock-data.json';
-// import {BASE_URL} from './constant.js';
-import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ResponseModel} from './response.model';
-import {tap} from 'rxjs/operators';
 import {CookieService} from 'ngx-cookie-service';
-
-const data = {
-  'users': [
-    {'id': 1, 'name': 'رضا', 'lastName': 'اسدی', 'email': 'reza@mail.com', 'password': '1234', 'gender': 'male', 'age': 23},
-    {'id': 2, 'name': 'کاربر', 'lastName': 'تست', 'email': 'test@mail.com', 'password': '1234', 'gender': 'female', 'age': 30}
-  ]
-};
 
 @Injectable({providedIn: 'root'})
 export class UserService {
   userData: User = new User();
   userDataObservable: EventEmitter<User> = new EventEmitter<User>();
-  isLogin: boolean = false;
+  isLogin: EventEmitter<boolean> = new EventEmitter<boolean>();
   session: string;
-
-  // users fields
-  users: User[] = [];
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
 
   checkLogin() {
-    // this.session = window.localStorage.getItem('session');
     this.session = this.cookieService.get('sessionid');
-    console.log(this.cookieService.get('sessionid'));
-    console.log(this.cookieService.get('sessionId'));
-    console.log(this.cookieService.get('session'));
-    console.log(this.session);
-    if (this.session == null || this.session == '') {
-      return this.isLogin = false;
+    if(this.session && this.session.trim() != ''){
+        if(this.userData.id == undefined){
+          this.getUserData().subscribe(res => {
+            if (!res.success) {
+              console.log('is login: false');
+              this.isLogin.emit(false);
+            } else {
+              console.log('is login: true ');
+              this.userData = res.data['user'];
+              this.userDataObservable.emit(this.userData);
+              this.isLogin.emit(true);
+            }
+          });
+        }
+      return true;
     } else {
-      this.getUserData().subscribe( res => {
-        console.log(res);
-        this.userData = res.data["user"];
-        this.userDataObservable.emit(this.userData);
-      })
-      return this.isLogin = true;
+      return false;
     }
+
   }
 
   login(username, password): Observable<any> {
+    console.log('login');
     let headers = new HttpHeaders();
     headers.append('contentType', 'application/json');
     let body = new FormData();
@@ -55,12 +47,13 @@ export class UserService {
     body.append('password', password);
     return this.http.post<any>('/user/api/login', body, {
       headers,
-      observe: 'response',
-      withCredentials: true
+      observe: 'body',
+      withCredentials: true,
     });
   }
 
   signup(username, password, email, phone): Observable<ResponseModel> {
+    console.log('signup');
     let headers = new HttpHeaders();
     headers.append('contentType', 'application/json');
     let body = new FormData();
@@ -72,89 +65,36 @@ export class UserService {
     if (phone) {
       body.append('phone_number', phone);
     }
-    return this.http.post<ResponseModel>( '/user/api/signup', body, {headers});
+    return this.http.post<ResponseModel>('/user/api/signup', body, {headers});
   }
 
-  getUserData() : Observable<ResponseModel> {
+  getUserData(): Observable<ResponseModel> {
+    console.log('checking login');
     let headers = new HttpHeaders();
     headers.append('contentType', 'application/json');
     return this.http.get('/user/api/get/all/user/information', {
       headers,
       withCredentials: true
-    })
+    });
   }
 
   logout() {
-    this.isLogin = false;
-    this.session = null;
-    // window.localStorage.removeItem('session');
-    this.userData = undefined;
-    this.userDataObservable.emit(undefined);
-    this.cookieService.delete('sessionid')
+    console.log('logout');
+    return this.http.get('/user/api/logout').subscribe(res => {
+      console.log(res);
+    });
   }
-  //
-  // createAccount(user: any) {
-  //   this.userData = new User(user.id, user.name, user.lastName, user.email);
-  //   this.userData.age = user.age;
-  //   this.userData.gender = user.gender;
-  // }
 
   checkPassword(userId: number, password: string) {
-    for (let i = 0; i < data.users.length; i++) {
-      if (data.users[i].id === userId) {
-        if (data.users[i].password === password) {
-          return {status: 200, message: 'success'};
-        }
-        return {status: 400, message: 'پسورد اشتباه است'};
-      }
-    }
-    return {status: 400, message: 'کاربر یافت نشد است'};
+    // for (let i = 0; i < data.users.length; i++) {
+    //   if (data.users[i].id === userId) {
+    //     if (data.users[i].password === password) {
+    //       return {status: 200, message: 'success'};
+    //     }
+    //     return {status: 400, message: 'پسورد اشتباه است'};
+    //   }
+    // }
+    // return {status: 400, message: 'کاربر یافت نشد است'};
   }
-
-
-  // users section
-  getUsers() {
-    if (this.users.length) {
-      return this.users;
-    } else {
-      for (let i = 0; i < data.users.length; i++) {
-        // this.users.push(new User(data.users[i].id, data.users[i].name, data.users[i].lastName, data.users[i].email));
-      }
-      return this.users;
-    }
-  }
-
-  getUser(id: number) {
-    for (let i = 0; i < data.users.length; i++) {
-      if (this.users[i].id === id) {
-        return this.users[i];
-      }
-    }
-  }
-
-  addUser(user) {
-    this.users = [...this.users, user];
-  }
-
-  editUser(id: number, user: User) {
-    for (let i = 0; i < data.users.length; i++) {
-      if (this.users[i].id === id) {
-        this.users[i] = user;
-      }
-    }
-  }
-
-  deleteUser(id: number) {
-    for (let i = 0; i < data.users.length; i++) {
-      if (this.users[i].id === id) {
-
-        console.log(this.users, this.users[i].id, i);
-        this.users.splice(i, 1);
-
-        return;
-      }
-    }
-  }
-
 
 }
